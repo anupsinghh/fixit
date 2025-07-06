@@ -1,0 +1,14 @@
+/* AdminLogin.css */
+.login-page {
+  max-width: 400px;
+  margin: auto;
+  padding: 2rem;
+}
+.login-form label {
+  display: block;
+  margin-bottom: 1rem;
+}
+.login-form input {
+  width: 100%;
+  padding: 0.5rem;
+}

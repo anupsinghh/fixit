@@ -1,0 +1,115 @@
+/* ComplaintForm.css */
+.complaint-form-page {
+  padding: 2rem;
+  background: #eef1f5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.complaint-form-page h2 {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.complaint-form-page p {
+  margin-bottom: 2rem;
+  color: #666;
+}
+
+.complaint-form {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.complaint-form label {
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  color: #444;
+}
+
+.complaint-form select,
+.complaint-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-top: 0.5rem;
+}
+
+.complaint-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.complaint-form button {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #28a745;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.complaint-form button:hover {
+  background-color: #218838;
+}
+.complaint-form input,
+.complaint-form select,
+.complaint-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-top: 0.5rem;
+}
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  z-index: 1000;
+  animation: fadeInOut 3.5s ease-in-out;
+}
+
+.toast.success {
+  background-color: #e6ffed;
+  color: #2e7d32;
+  border: 1px solid #4caf50;
+}
+
+.toast.error {
+  background-color: #ffe6e6;
+  color: #c62828;
+  border: 1px solid #f44336;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-10px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+
+.ticket-number-banner {
+  margin-bottom: 1rem;
+  padding: 12px;
+  background-color: #f0f9ff;
+  border-left: 4px solid #2196f3;
+  color: #0d47a1;
+  font-weight: bold;
+  border-radius: 4px;
+}
