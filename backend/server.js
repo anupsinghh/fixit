@@ -105,3 +105,10 @@ app.post('/api/users', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+
+const cors = require('cors');
+
+app.use(cors({
+  origin: 'https://fixeet.vercel.app/' // replace with your actual Vercel URL
+}));
+
