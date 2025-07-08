@@ -5,12 +5,20 @@ import './Home.css';
 const Home = () => {
   const navigate = useNavigate();
 
-  const handleStudentClick = () => {
-    navigate('/student-login');
-  };
+  const handleGetStarted = () => {
+    const student = localStorage.getItem('student');
+    const admin = localStorage.getItem('admin');
+    const technician = localStorage.getItem('technician');
 
-  const handleAdminClick = () => {
-    navigate('/admin-login'); // You can create this page later
+    if (student) {
+      navigate('/student-dashboard');
+    } else if (admin) {
+      navigate('/admin-dashboard');
+    } else if (technician) {
+      navigate('/technician-dashboard'); // adjust this route if needed
+    } else {
+      navigate('/login');
+    }
   };
 
   return (
@@ -19,34 +27,29 @@ const Home = () => {
       <section className="welcome-section">
         <div className="overlay">
           <h1>Welcome to FixMate</h1>
-          <p>Your one-stop solution for managing hostel complaints efficiently.</p>
-          <div className="button-group">
-            <button className="primary" onClick={handleStudentClick}>
-              Student
-            </button>
-            <button className="secondary" onClick={handleAdminClick}>
-              Admin/Technician
-            </button>
-          </div>
+          <p>Your all-in-one portal for hostel maintenance and issue resolution.</p>
+          <button className="primary" onClick={handleGetStarted}>
+            Get Started
+          </button>
         </div>
       </section>
 
-      {/* How It Works Section */}
+      {/* Features Section */}
       <section className="how-it-works">
-        <h2>How FixMate Works</h2>
-        <p>Our system streamlines the complaint process, ensuring quick and effective resolution.</p>
+        <h2>Why FixMate?</h2>
+        <p>From complaint submission to resolution — everything’s tracked, transparent, and fast.</p>
         <div className="cards">
           <div className="card">
-            <h3>📋 Submit a Complaint</h3>
-            <p>Students can easily submit complaints through a user-friendly interface.</p>
+            <h3>📋 Raise Complaints</h3>
+            <p>Quickly report issues with electricity, plumbing, cleaning, and more.</p>
           </div>
           <div className="card">
-            <h3>⏱️ Track Progress</h3>
-            <p>Track the status of your complaint in real-time, from submission to resolution.</p>
+            <h3>📊 Real-Time Dashboard</h3>
+            <p>Students, technicians, and admins get dedicated views to track and manage tickets.</p>
           </div>
           <div className="card">
-            <h3>💬 Get Support</h3>
-            <p>Our dedicated team is available to assist with any issues or questions you may have.</p>
+            <h3>💬 Communication Ready</h3>
+            <p>Seamless coordination between residents and hostel maintenance teams.</p>
           </div>
         </div>
       </section>

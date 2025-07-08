@@ -29,7 +29,7 @@ const AdminDashboard = () => {
   }, [sidebarOpen]);
 
   const fetchComplaints = () => {
-    fetch('http://localhost:5000/api/complaints')
+    fetch('https://fixit-backend-kcce.onrender.com/api/complaints')
       .then(res => res.json())
       .then(data => {
         setComplaints(data);
@@ -80,7 +80,7 @@ const AdminDashboard = () => {
   const handleUpdate = async (id) => {
     try {
       const { status, technician } = edited[id];
-      await fetch(`http://localhost:5000/api/complaints/${id}`, {
+      await fetch(`https://fixit-backend-kcce.onrender.com/api/complaints/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status, technician })

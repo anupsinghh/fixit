@@ -10,7 +10,7 @@ const UserManagement = () => {
   const [technicianForm, setTechnicianForm] = useState({ name: '', id: '', specialization: '', contact: '' });
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/users')
+    fetch('https://fixit-backend-kcce.onrender.com/api/users')
       .then(res => res.json())
       .then(data => {
         setStudents(data.filter(u => u.role === 'student'));
@@ -28,7 +28,7 @@ const UserManagement = () => {
     e.preventDefault();
     const payload = { ...studentForm, role: 'student' };
 
-    const res = await fetch('http://localhost:5000/api/users', {
+    const res = await fetch('https://fixit-backend-kcce.onrender.com/api/users', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
@@ -48,7 +48,7 @@ const UserManagement = () => {
     e.preventDefault();
     const payload = { ...technicianForm, role: 'technician' };
 
-    const res = await fetch('http://localhost:5000/api/users', {
+    const res = await fetch('https://fixit-backend-kcce.onrender.com/api/users', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
