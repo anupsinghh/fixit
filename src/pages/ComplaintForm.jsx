@@ -33,7 +33,7 @@ const ComplaintForm = () => {
     };
 
     try {
-      const res = await fetch('https://fixit-backend.onrender.com/api/complaints', {
+      const res = await fetch('https://fixit-backend-kcce.onrender.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
