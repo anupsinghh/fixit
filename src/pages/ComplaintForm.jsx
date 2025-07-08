@@ -33,13 +33,20 @@ const ComplaintForm = () => {
     };
 
     try {
-      const res = await fetch('https://fixit-backend-kcce.onrender.com', {
+      const res = await fetch('https://fixit-backend-kcce.onrender.com/api/complaints', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
 
+      // Check if server responded with JSON
+      const contentType = res.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new Error('Invalid server response: not JSON');
+      }
+
       const data = await res.json();
+
       if (res.ok) {
         setTicket(data.ticket || '');
         setToast({ type: 'success', message: data.message || 'Complaint submitted successfully!' });
@@ -54,7 +61,6 @@ const ComplaintForm = () => {
       setToast({ type: 'error', message: 'Error submitting complaint. Please try again.' });
     }
 
-    // Auto-hide the toast after 3.5 seconds
     setTimeout(() => {
       setToast({ type: '', message: '' });
     }, 3500);
@@ -65,14 +71,12 @@ const ComplaintForm = () => {
       <h2>Submit Complaint</h2>
       <p>Logged in as: <strong>{student?.roll}</strong></p>
 
-      {/* ✅ Ticket on Top */}
       {ticket && (
         <div className="ticket-number-banner">
           🎫 Your Complaint Ticket: <strong>{ticket}</strong>
         </div>
       )}
 
-      {/* ✅ Toast popup */}
       {toast.message && (
         <div className={`toast ${toast.type}`}>
           {toast.type === 'success' ? '✅' : '❌'} {toast.message}
