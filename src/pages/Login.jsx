@@ -25,7 +25,7 @@ const Login = () => {
         localStorage.setItem('technician', JSON.stringify({ id: identifier }));
         localStorage.setItem('role', 'technician');
         window.dispatchEvent(new Event('storage'));
-        navigate('/technician-dashboard'); // Make sure this route exists
+        navigate('/technician-dashboard'); 
       } else {
         alert('Invalid technician credentials');
       }

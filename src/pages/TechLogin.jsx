@@ -8,9 +8,9 @@ const TechLogin = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Basic validation (replace with backend auth later)
+
     if (id && password) {
-      navigate('/tech-dashboard'); // You can define this route later
+      navigate('/tech-dashboard'); 
     } else {
       alert("Please enter ID and password.");
     }

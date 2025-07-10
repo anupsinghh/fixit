@@ -39,7 +39,7 @@ const ComplaintForm = () => {
         body: JSON.stringify(payload),
       });
 
-      // Check if server responded with JSON
+     
       const contentType = res.headers.get('content-type');
       if (!contentType || !contentType.includes('application/json')) {
         throw new Error('Invalid server response: not JSON');

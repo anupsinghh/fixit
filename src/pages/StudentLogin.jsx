@@ -10,10 +10,10 @@ const StudentLogin = () => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // ✅ Simple placeholder login logic
+   
     if (roll === '123' && password === 'student') {
      localStorage.setItem('student', JSON.stringify({ roll }));
-      window.dispatchEvent(new Event('storage')); // Trigger navbar update
+      window.dispatchEvent(new Event('storage')); 
       navigate('/complaint');
     } else {
       alert('Invalid roll number or password');
