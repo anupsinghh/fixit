@@ -7,12 +7,29 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI;
 
-// Middleware
+// Allowed origins for CORS (production + local dev)
+const allowedOrigins = [
+  'https://fixeet.vercel.app',  // Production frontend
+  'http://localhost:3000',       // Common React dev port
+  'http://localhost:3001',       // Your local frontend port (as per your usage)
+];
+
+// Middleware to handle CORS with dynamic origin
 app.use(cors({
-  origin: 'https://fixeet.vercel.app', // replace with your deployed frontend URL
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like Postman, curl)
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error(`CORS policy: Origin ${origin} not allowed.`));
+    }
+  },
   methods: ['GET', 'POST', 'PUT'],
-  credentials: true
+  credentials: true,
 }));
+
 app.use(express.json());
 
 // MongoDB Connection

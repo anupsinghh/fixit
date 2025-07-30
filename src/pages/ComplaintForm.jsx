@@ -39,7 +39,6 @@ const ComplaintForm = () => {
         body: JSON.stringify(payload),
       });
 
-     
       const contentType = res.headers.get('content-type');
       if (!contentType || !contentType.includes('application/json')) {
         throw new Error('Invalid server response: not JSON');
@@ -97,10 +96,10 @@ const ComplaintForm = () => {
         </label>
 
         <label>
-          Room No:
+          Location:
           <input
             type="text"
-            placeholder="Ex. Hostel-D 512"
+            placeholder="Ex. Mainbuilding MA203"
             value={room}
             onChange={(e) => setRoom(e.target.value)}
             required

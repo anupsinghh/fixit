@@ -9,6 +9,7 @@ import ComplaintForm from './pages/ComplaintForm';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
 import UserManagement from './pages/UserManagement';
+import AdminManagerDashboard from './pages/AdminManagerDashboard';
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
         <Route path="admin-login" element={<AdminLogin />} />
         <Route path="admin-dashboard" element={<AdminDashboard />} />
         <Route path="admin/users" element={<UserManagement />} />
+        <Route path="/manager-dashboard" element={<AdminManagerDashboard />} />
+
         
       </Route>
     </Routes>

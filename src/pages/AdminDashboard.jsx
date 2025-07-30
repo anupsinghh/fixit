@@ -64,7 +64,7 @@ const AdminDashboard = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('admin');
-    navigate('/admin-login');
+    navigate('/');
   };
 
   const handleChange = (id, field, value) => {

@@ -10,7 +10,7 @@ const AdminLogin = () => {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // Hardcoded admin credentials
+   
     if (email === 'admin@fixmate.com' && password === 'admin123') {
       localStorage.setItem('admin', true);
       navigate('/admin-dashboard');

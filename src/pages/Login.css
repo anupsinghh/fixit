@@ -1,66 +1,98 @@
 /* Login.css */
 
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  background: #f5f7fb;
+  min-height: 100vh;
+}
+
 .login-page {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
+  justify-content: center;
   min-height: 100vh;
-  background: #f4f6f8;
-}
-
-.login-page h2 {
-  margin-bottom: 1.5rem;
-  color: #333;
-  font-weight: 600;
-  font-size: 1.8rem;
 }
 
 .login-form {
+  background: #fff;
+  padding: 2.5rem 2rem;
+  border-radius: 18px;
+  box-shadow: 0 4px 28px 0 rgba(30, 34, 90, 0.10),
+              0 1.5px 4px 0 rgba(20, 28, 50, 0.08);
   display: flex;
   flex-direction: column;
+  gap: 1.3rem;
   width: 100%;
-  max-width: 400px;
-  padding: 2rem;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  max-width: 350px;
+}
+
+.login-form h2 {
+  text-align: center;
+  color: #14213d;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
 }
 
 .login-form label {
-  margin-bottom: 0.5rem;
-  color: #444;
+  display: flex;
+  flex-direction: column;
+  color: #22223b;
   font-weight: 500;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
 }
 
 .login-form input,
 .login-form select {
-  margin-bottom: 1.2rem;
   padding: 0.75rem;
-  font-size: 1rem;
+  margin-top: 0.3rem;
+  border: 1px solid #bfcada;
   border-radius: 8px;
-  border: 1px solid #ccc;
-  transition: border 0.2s ease;
+  outline: none;
+  font-size: 1rem;
+  background: #f8fafc;
+  transition: border-color 0.2s;
 }
 
 .login-form input:focus,
 .login-form select:focus {
-  border-color: #007bff;
-  outline: none;
+  border-color: #4361ee;
+  background: #fff;
 }
 
 .login-form button {
-  padding: 0.75rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 8px;
-  background-color: #007bff;
+  padding: 0.85rem 2rem;
+  border-radius: 9px;
+  background: linear-gradient(90deg, #4361ee 25%, #4895ef 100%);
   color: #fff;
+  font-weight: 600;
+  border: none;
+  font-size: 1.1rem;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.2s, transform 0.2s;
+  margin-top: 0.4rem;
+  box-shadow: 0 2px 6px rgba(70, 130, 255, 0.12);
 }
 
-.login-form button:hover {
-  background-color: #0056b3;
+.login-form button:hover,
+.login-form button:focus {
+  background: linear-gradient(90deg, #4895ef 10%, #4361ee 100%);
+  transform: translateY(-1.5px) scale(1.03);
+}
+
+@media (max-width: 540px) {
+  .login-form {
+    padding: 1.5rem 1rem;
+    max-width: 95vw;
+  }
+
+  .login-form label,
+  .login-form input,
+  .login-form select {
+    font-size: 0.97rem;
+  }
 }
