@@ -1,0 +1,287 @@
+/* StudentDashboard.css */
+
+.student-dashboard {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: #222;
+}
+
+.student-dashboard header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.student-dashboard header h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.student-dashboard header div {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  color: #555;
+}
+
+.new-complaint-btn {
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.3rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.2);
+  transition: background-color 0.25s;
+  margin-bottom: 1.5rem;
+}
+
+.new-complaint-btn:hover,
+.new-complaint-btn:focus {
+  background-color: #084eca;
+  outline: none;
+}
+
+.loading,
+.no-complaints,
+.error-text {
+  font-size: 1.1rem;
+  color: #666;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.complaints-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+  overflow-x: auto;
+  display: block;
+  max-width: 100%;
+}
+
+.complaints-table thead {
+  background-color: #f1f3f5;
+}
+
+.complaints-table th,
+.complaints-table td {
+  padding: 0.9rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.complaints-table th.feedback-col,
+.complaints-table td.feedback-col {
+  width: 130px;
+  text-align: center;
+}
+
+.status {
+  padding: 0.15rem 0.6rem;
+  border-radius: 15px;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-block;
+  min-width: 80px;
+  text-align: center;
+}
+
+/* Status colors */
+.status.pending {
+  background-color: #ffc107;
+  color: #3e2e00;
+}
+
+.status.in-progress {
+  background-color: #0d6efd;
+}
+
+.status.resolved {
+  background-color: #198754;
+}
+
+.compact-feedback-yn {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  align-items: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.compact-feedback-yn span {
+  margin-right: 0.5rem;
+}
+
+.yn-btn {
+  padding: 0.4rem 0.9rem;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.25s;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.yes-btn {
+  background-color: #198754;
+  color: white;
+}
+
+.yes-btn:hover,
+.yes-btn:focus {
+  background-color: #146c43;
+  outline: none;
+}
+
+.no-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.no-btn:hover,
+.no-btn:focus {
+  background-color: #b02a37;
+  outline: none;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(36, 40, 44, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1500;
+  padding: 1rem;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 15px;
+  padding: 2rem 2.5rem;
+  max-width: 90vw;
+  width: 400px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0d6efd;
+}
+
+.modal-content textarea {
+  resize: vertical;
+  min-height: 100px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1.5px solid #ddd;
+  padding: 1rem;
+  font-family: var(--font-family);
+  margin-bottom: 1.5rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.modal-content textarea:focus {
+  border-color: #0d6efd;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.submit-btn {
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 5px 18px rgba(13, 110, 253, 0.4);
+  transition: background-color 0.2s;
+}
+
+.submit-btn:hover,
+.submit-btn:focus {
+  background-color: #084eca;
+  outline: none;
+}
+
+.cancel-btn {
+  background-color: #e2e6ea;
+  color: #495057;
+  border: none;
+  padding: 0.63rem 1.4rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  transition: background-color 0.2s;
+}
+
+.cancel-btn:hover,
+.cancel-btn:focus {
+  background-color: #d6d8db;
+  outline: none;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .complaints-table th, 
+  .complaints-table td {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+  }
+  .modal-content {
+    width: 90vw;
+    padding: 1rem 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .student-dashboard header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .new-complaint-btn {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .complaints-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .modal-actions {
+    flex-direction: column-reverse;
+  }
+  .submit-btn, .cancel-btn {
+    width: 100%;
+  }
+}

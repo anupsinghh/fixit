@@ -1,3 +1,4 @@
+// AdminDashboard.jsx
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AdminDashboard.css';
@@ -12,6 +13,8 @@ const AdminDashboard = () => {
     resolved: 0,
     pending: 0,
   });
+  const [notifications, setNotifications] = useState([]);
+  const [loadingNotifications, setLoadingNotifications] = useState(true);
 
   const navigate = useNavigate();
 
@@ -21,6 +24,7 @@ const AdminDashboard = () => {
       navigate('/admin-login');
     } else {
       fetchComplaints();
+      fetchNotifications();
     }
   }, [navigate]);
 
@@ -62,6 +66,19 @@ const AdminDashboard = () => {
       .catch(err => console.error('Failed to fetch complaints:', err));
   };
 
+  const fetchNotifications = () => {
+    fetch('https://fixit-backend-kcce.onrender.com/api/notifications')
+      .then(res => res.json())
+      .then(data => {
+        setNotifications(data);
+        setLoadingNotifications(false);
+      })
+      .catch(err => {
+        console.error('Failed to fetch notifications:', err);
+        setLoadingNotifications(false);
+      });
+  };
+
   const handleLogout = () => {
     localStorage.removeItem('admin');
     navigate('/');
@@ -88,6 +105,21 @@ const AdminDashboard = () => {
       fetchComplaints();
     } catch (err) {
       console.error('Failed to update complaint:', err);
+    }
+  };
+
+  const handleReopen = async (complaintId) => {
+    if (!window.confirm('Are you sure you want to reopen this complaint?')) return;
+    try {
+      await fetch(`https://fixit-backend-kcce.onrender.com/api/complaints/${complaintId}/reopen`, {
+        method: 'POST',
+      });
+      fetchComplaints();
+      fetchNotifications();
+      alert('Complaint reopened successfully');
+    } catch (err) {
+      console.error('Failed to reopen complaint:', err);
+      alert('Error reopening complaint');
     }
   };
 
@@ -178,6 +210,53 @@ const AdminDashboard = () => {
               ))}
             </tbody>
           </table>
+        </section>
+
+        <section className="notifications-section" style={{ marginTop: '3rem' }}>
+          <h2>Unsatisfied Feedback Notifications</h2>
+          {loadingNotifications ? (
+            <p>Loading notifications...</p>
+          ) : notifications.length === 0 ? (
+            <p>No unsatisfied feedback notifications.</p>
+          ) : (
+            <table className="notifications-table" style={{ width: '100%', borderCollapse: 'collapse' }}>
+              <thead>
+                <tr>
+                  <th>Ticket</th>
+                  <th>Student Roll</th>
+                  <th>Comment</th>
+                  <th>Date</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {notifications.map(notif => (
+                  <tr key={notif._id} style={{ borderBottom: '1px solid #ddd' }}>
+                    <td>#{notif.ticket}</td>
+                    <td>{notif.studentRoll}</td>
+                    <td>{notif.comment || '—'}</td>
+                    <td>{new Date(notif.createdAt).toLocaleString()}</td>
+                    <td>
+                      <button
+                        style={{
+                          padding: '0.4rem 0.9rem',
+                          borderRadius: '6px',
+                          border: 'none',
+                          backgroundColor: '#0d6efd',
+                          color: 'white',
+                          cursor: 'pointer',
+                          fontWeight: '600',
+                        }}
+                        onClick={() => handleReopen(notif.complaintId)}
+                      >
+                        Reopen
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
         </section>
       </main>
     </div>

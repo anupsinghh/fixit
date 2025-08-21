@@ -36,7 +36,7 @@ const Layout = () => {
           <button onClick={() => handleNavigate('/')}>Home</button>
 
           {role === 'student' && (
-            <button onClick={() => handleNavigate('/complaint')}>Student Dashboard</button>
+            <button onClick={() => handleNavigate('/student-dashboard')}>Student Dashboard</button>
           )}
 
           {role === 'technician' && (
