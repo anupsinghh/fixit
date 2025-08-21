@@ -1,98 +1,114 @@
-/* Login.css */
-
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-  background: #f5f7fb;
-  min-height: 100vh;
-}
-
-.login-page {
+/* Login container holds form and credentials side by side */
+.login-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+  max-width: 900px;
+  margin: 2rem auto;
+  gap: 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+/* Form styles */
 .login-form {
+  flex: 1;
   background: #fff;
-  padding: 2.5rem 2rem;
-  border-radius: 18px;
-  box-shadow: 0 4px 28px 0 rgba(30, 34, 90, 0.10),
-              0 1.5px 4px 0 rgba(20, 28, 50, 0.08);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
-  gap: 1.3rem;
-  width: 100%;
-  max-width: 350px;
 }
 
 .login-form h2 {
-  text-align: center;
-  color: #14213d;
   margin-bottom: 1.5rem;
-  letter-spacing: 1px;
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #0d6efd;
 }
 
 .login-form label {
-  display: flex;
-  flex-direction: column;
-  color: #22223b;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
 }
 
-.login-form input,
-.login-form select {
-  padding: 0.75rem;
+.login-form input {
   margin-top: 0.3rem;
-  border: 1px solid #bfcada;
-  border-radius: 8px;
-  outline: none;
+  padding: 0.5rem 0.8rem;
   font-size: 1rem;
-  background: #f8fafc;
-  transition: border-color 0.2s;
-}
-
-.login-form input:focus,
-.login-form select:focus {
-  border-color: #4361ee;
-  background: #fff;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .login-form button {
-  padding: 0.85rem 2rem;
-  border-radius: 9px;
-  background: linear-gradient(90deg, #4361ee 25%, #4895ef 100%);
-  color: #fff;
-  font-weight: 600;
+  background-color: #0d6efd;
+  color: white;
   border: none;
-  font-size: 1.1rem;
+  padding: 0.75rem;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
-  margin-top: 0.4rem;
-  box-shadow: 0 2px 6px rgba(70, 130, 255, 0.12);
+  font-weight: 600;
+  margin-top: 1.5rem;
+  transition: background-color 0.3s ease;
 }
 
 .login-form button:hover,
 .login-form button:focus {
-  background: linear-gradient(90deg, #4895ef 10%, #4361ee 100%);
-  transform: translateY(-1.5px) scale(1.03);
+  background-color: #084eca;
+  outline: none;
 }
 
-@media (max-width: 540px) {
-  .login-form {
-    padding: 1.5rem 1rem;
-    max-width: 95vw;
-  }
+/* Credentials panel styles */
+.credentials-panel {
+  flex: 1;
+  background: #f0f4ff;
+  border-radius: 10px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  overflow: visible; /* no scroll */
+  font-family: monospace, monospace;
+  font-size: 1rem;
+  color: #222;
+}
 
-  .login-form label,
-  .login-form input,
-  .login-form select {
-    font-size: 0.97rem;
-  }
+.credentials-panel h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #0d6efd;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.credential-section {
+  margin-bottom: 2rem;
+}
+
+.credential-section strong {
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.tech-group {
+  margin-bottom: 0.4rem;
+}
+
+.tech-group em {
+  font-style: normal;
+  font-weight: 600;
+  color: #0d6efd;
+}
+
+.credential-section p {
+  margin: 0.2rem 0;
+}
+
+.code {
+  background-color: #e9ecef;
+  padding: 0 5px;
+  border-radius: 3px;
+  font-family: monospace;
+  font-weight: 600;
 }

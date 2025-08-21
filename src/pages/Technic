@@ -1,0 +1,155 @@
+/* TechnicianDashboard.css */
+
+.technician-dashboard {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: #222;
+}
+
+header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+h2 {
+  margin: 0 0 0.5rem;
+}
+
+p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Tables */
+
+table.complaints-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+.complaints-table th,
+.complaints-table td {
+  border: 1px solid #ddd;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.complaints-table th {
+  background-color: #f5f5f5;
+  font-weight: 700;
+  color: #333;
+}
+
+/* Select dropdown */
+
+.complaints-table select {
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.complaints-table select:focus {
+  outline: none;
+  border-color: #0d6efd;
+  box-shadow: 0 0 4px rgba(13, 110, 253, 0.5);
+}
+
+/* Save button */
+
+.complaints-table button {
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.4rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.complaints-table button:hover,
+.complaints-table button:focus {
+  background-color: #084eca;
+  outline: none;
+}
+
+/* Save status message */
+
+.save-status {
+  margin-left: 10px;
+  font-size: 0.85rem;
+  color: green;
+}
+
+/* Responsive */
+
+@media (max-width: 600px) {
+  .technician-dashboard {
+    padding: 0 0.5rem;
+  }
+  table.complaints-table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  thead tr {
+    display: none;
+  }
+
+  tbody tr {
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0.5rem;
+  }
+
+  tbody td {
+    border: none;
+    padding-left: 50%;
+    position: relative;
+    white-space: normal;
+    text-align: left;
+  }
+  
+  tbody td::before {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 600;
+    color: #0d6efd;
+    white-space: nowrap;
+  }
+
+  tbody td:nth-of-type(1)::before { content: "Ticket"; }
+  tbody td:nth-of-type(2)::before { content: "Category"; }
+  tbody td:nth-of-type(3)::before { content: "Location"; }
+  tbody td:nth-of-type(4)::before { content: "Description"; }
+  tbody td:nth-of-type(5)::before { content: "Status"; }
+  tbody td:nth-of-type(6)::before { content: "Date Submitted"; }
+  tbody td:nth-of-type(7)::before { content: "Save"; }
+
+  .complaints-table button {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .save-status {
+    display: block;
+    margin-left: 0;
+    margin-top: 0.3rem;
+  }
+}

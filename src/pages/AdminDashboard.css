@@ -247,3 +247,129 @@ button:hover {
     padding: 1rem;
   }
 }
+/* Notification Section */
+
+.notifications-section {
+  margin-top: 3rem;
+  max-width: 1000px;
+  background-color: #fff;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: #222;
+}
+
+.notifications-section h2 {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #0d6efd;
+}
+
+/* Responsive scroll container for table */
+
+.notifications-table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow-x: auto;
+  display: block;
+}
+
+.notifications-table thead {
+  background-color: #f1f3f5;
+}
+
+.notifications-table th,
+.notifications-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  white-space: nowrap;
+  font-size: 0.95rem;
+}
+
+.notifications-table th {
+  font-weight: 700;
+  color: #333;
+}
+
+.notifications-table tbody tr:hover {
+  background-color: #e6f0ff;
+  cursor: pointer;
+}
+
+/* Reopen Button */
+
+.notifications-table button {
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  border: none;
+  background-color: #0d6efd;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+}
+
+.notifications-table button:hover,
+.notifications-table button:focus {
+  background-color: #084eca;
+  outline: none;
+}
+
+/* Small screen adjustments */
+
+@media (max-width: 600px) {
+  .notifications-table {
+    font-size: 0.85rem;
+  }
+
+  .notifications-table thead {
+    display: none; /* Hide header for mobile */
+  }
+
+  .notifications-table, 
+  .notifications-table tbody, 
+  .notifications-table tr, 
+  .notifications-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .notifications-table tr {
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #0d6efd;
+  }
+
+  .notifications-table td {
+    padding-left: 50%;
+    position: relative;
+    text-align: left;
+  }
+
+  .notifications-table td::before {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 600;
+    color: #0d6efd;
+    white-space: nowrap;
+  }
+
+  /* Add label text for each cell */
+  .notifications-table td:nth-of-type(1)::before { content: "Ticket"; }
+  .notifications-table td:nth-of-type(2)::before { content: "Student Roll"; }
+  .notifications-table td:nth-of-type(3)::before { content: "Comment"; }
+  .notifications-table td:nth-of-type(4)::before { content: "Date"; }
+  .notifications-table td:nth-of-type(5)::before { content: "Action"; }
+
+  .notifications-table button {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+}

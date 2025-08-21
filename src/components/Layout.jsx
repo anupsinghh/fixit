@@ -35,16 +35,18 @@ const Layout = () => {
         <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
           <button onClick={() => handleNavigate('/')}>Home</button>
 
-          {role === 'student' && (
-            <button onClick={() => handleNavigate('/student-dashboard')}>Student Dashboard</button>
+          {role === 'user' && (
+            <button onClick={() => handleNavigate('/student-dashboard')}>Dashboard</button>
           )}
 
           {role === 'technician' && (
-            <button onClick={() => handleNavigate('/technician-dashboard')}>Technician Dashboard</button>
+            <button onClick={() => handleNavigate('/technician-dashboard')}>Dashboard</button>
           )}
-
+          {role === 'manager' && (
+            <button onClick={() => handleNavigate('/manager-dashboard')}>Dashboard</button>
+          )}
           {role === 'admin' && (
-            <button onClick={() => handleNavigate('/admin-dashboard')}>Admin Dashboard</button>
+            <button onClick={() => handleNavigate('/admin-dashboard')}>Dashboard</button>
           )}
 
           {!role ? (

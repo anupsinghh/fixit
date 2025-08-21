@@ -49,29 +49,36 @@ const StudentDashboard = () => {
 
   // Compact feedback: Yes (satisfied) or No (not satisfied, with comment)
   const handleSubmitFeedback = async (id, satisfiedOnly = false) => {
-    const feedback = satisfiedOnly
-      ? { satisfied: true }
-      : feedbacks[id];
+  let feedback;
+  if (satisfiedOnly) {
+    feedback = { satisfied: true, comment: '' }; // explicit satisfied true
+  } else {
+    feedback = feedbacks[id] || {};
+    feedback.satisfied = false; // <-- explicitly set false for "No"
+    // Optionally ensure 'comment' field is a string even if empty
+    if (!('comment' in feedback)) feedback.comment = '';
+  }
 
-    if (!feedback) return;
+  if (!feedback) return;
 
-    try {
-      await fetch(`https://fixit-backend-kcce.onrender.com/api/complaints/${id}/feedback`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(feedback),
-      });
-      alert("Feedback submitted successfully!");
-      handleCloseModal();
-      setFeedbacks(prev => ({
-        ...prev,
-        [id]: feedback
-      }));
-    } catch (err) {
-      console.error("Error submitting feedback:", err);
-      alert("Failed to submit feedback.");
-    }
-  };
+  try {
+    await fetch(`https://fixit-backend-kcce.onrender.com/api/complaints/${id}/feedback`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(feedback),
+    });
+    alert("Feedback submitted successfully!");
+    handleCloseModal();
+    setFeedbacks(prev => ({
+      ...prev,
+      [id]: feedback
+    }));
+  } catch (err) {
+    console.error("Error submitting feedback:", err);
+    alert("Failed to submit feedback.");
+  }
+};
+
 
   return (
     <div className="student-dashboard">

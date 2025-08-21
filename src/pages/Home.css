@@ -17,6 +17,11 @@
   background-color: rgba(0, 0, 0, 0.5);
   padding: 40px;
   border-radius: 10px;
+  font-size: 1.8rem;
+}
+.welcome-section p {
+  font-size: 1.2rem;
+  color: #eaeaea;
 }
 
 .button-group {

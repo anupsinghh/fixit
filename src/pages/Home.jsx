@@ -15,7 +15,7 @@ const Home = () => {
     } else if (admin) {
       navigate('/admin-dashboard');
     } else if (technician) {
-      navigate('/technician-dashboard'); // adjust this route if needed
+      navigate('/technician-dashboard'); 
     } else {
       navigate('/login');
     }
@@ -27,7 +27,7 @@ const Home = () => {
       <section className="welcome-section">
         <div className="overlay">
           <h1>Welcome to FixMate</h1>
-          <p>Your all-in-one portal for hostel maintenance and issue resolution.</p>
+          <p>Your all-in-one portal for College/hostel maintenance and issue resolution.</p>
           <button className="primary" onClick={handleGetStarted}>
             Get Started
           </button>
