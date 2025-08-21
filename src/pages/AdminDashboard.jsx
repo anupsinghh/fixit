@@ -322,7 +322,7 @@ const AdminDashboard = () => {
                 <thead>
                   <tr>
                     <th>Ticket</th>
-                    <th>Student Roll</th>
+                    <th>Name</th>
                     <th>Comment</th>
                     <th>Date</th>
                     <th>Status</th>

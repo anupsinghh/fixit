@@ -25,9 +25,13 @@ const AdminManagerDashboard = () => {
   const [saveStatus, setSaveStatus] = useState({});
   const [showFeedbackTab, setShowFeedbackTab] = useState(false);
 
-  const navigate = useNavigate();
+  // filters
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filterStatus, setFilterStatus] = useState('');
+  const [filterCategory, setFilterCategory] = useState('');
+  const [filterDate, setFilterDate] = useState('');
 
-  // Current time minus 24 hours for filtering older notifications
+  const navigate = useNavigate();
   const cutoffTime = Date.now() - 24 * 60 * 60 * 1000;
 
   useEffect(() => {
@@ -81,7 +85,6 @@ const AdminManagerDashboard = () => {
     fetch('https://fixit-backend-kcce.onrender.com/api/notifications')
       .then(res => res.json())
       .then(data => {
-        // Filter out notifications older than 24 hours and already reopened (read)
         const filtered = data.filter(n => {
           const notifDate = new Date(n.createdAt).getTime();
           return !n.read && notifDate > cutoffTime;
@@ -137,7 +140,6 @@ const AdminManagerDashboard = () => {
       await fetch(`https://fixit-backend-kcce.onrender.com/api/complaints/${complaintId}/reopen`, {
         method: 'POST',
       });
-      // Mark notification as read (set 'read' to true)
       await fetch(`https://fixit-backend-kcce.onrender.com/api/notifications/${complaintId}/read`, {
         method: 'PUT',
       });
@@ -151,10 +153,25 @@ const AdminManagerDashboard = () => {
     }
   };
 
-  // Sidebar link to toggle Feedback notifications tab
   const toggleFeedbackTab = () => {
     setShowFeedbackTab(!showFeedbackTab);
   };
+
+  // apply filters
+  const filteredComplaints = complaints.filter(c => {
+    const matchesSearch =
+      c.ticket?.toString().includes(searchTerm) ||
+      c.category.toLowerCase().includes(searchTerm.toLowerCase());
+
+    const matchesStatus = filterStatus ? c.status === filterStatus : true;
+    const matchesCategory = filterCategory ? c.category === filterCategory : true;
+    const matchesDate = filterDate
+      ? new Date(c.createdAt).toLocaleDateString() ===
+        new Date(filterDate).toLocaleDateString()
+      : true;
+
+    return matchesSearch && matchesStatus && matchesCategory && matchesDate;
+  });
 
   return (
     <div className="admin-dashboard">
@@ -212,10 +229,29 @@ const AdminManagerDashboard = () => {
             <section className="complaint-list">
               <h2>Current Complaints</h2>
               <div className="filters">
-                <input type="text" placeholder="Search complaints..." />
-                <select><option>Status</option></select>
-                <select><option>Category</option></select>
-                <select><option>Date</option></select>
+                <input
+                  type="text"
+                  placeholder="Search complaints..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+                <select value={filterStatus} onChange={(e) => setFilterStatus(e.target.value)}>
+                  <option value="">All Status</option>
+                  <option value="Pending">Pending</option>
+                  <option value="In Progress">In Progress</option>
+                  <option value="Resolved">Resolved</option>
+                </select>
+                <select value={filterCategory} onChange={(e) => setFilterCategory(e.target.value)}>
+                  <option value="">All Categories</option>
+                  {Object.keys(technicianData).map(cat => (
+                    <option key={cat} value={cat}>{cat}</option>
+                  ))}
+                </select>
+                <input
+                  type="date"
+                  value={filterDate}
+                  onChange={(e) => setFilterDate(e.target.value)}
+                />
               </div>
               <table>
                 <thead>
@@ -229,7 +265,7 @@ const AdminManagerDashboard = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {complaints.map(c => {
+                  {filteredComplaints.map(c => {
                     const techsForCategory = technicianData[c.category] || [];
                     return (
                       <tr key={c._id}>
@@ -286,7 +322,7 @@ const AdminManagerDashboard = () => {
                 <thead>
                   <tr>
                     <th>Ticket</th>
-                    <th>Student Roll</th>
+                    <th>Name</th>
                     <th>Comment</th>
                     <th>Date</th>
                     <th>Status</th>
