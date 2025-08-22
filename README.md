@@ -1,70 +1,104 @@
-# Getting Started with Create React App
+# Complaint & Ticketing Portal
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A web-based platform for managing user complaints, support tickets, and their resolutions. It provides an easy way for users to raise issues and for admins/staff to track, prioritize, and resolve them.
 
-## Available Scripts
+## 🚀 Features
 
-In the project directory, you can run:
+* User authentication and role-based access (User / Admin)
+* Submit new complaints or support tickets
+* Track ticket status (Open, In Progress, Resolved, Closed)
+* Comment and update on tickets
+* Admin dashboard for managing complaints
+* Search, filter, and sort tickets
 
-### `npm start`
+## 🛠️ Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* **Frontend**: React / HTML, CSS, JavaScript
+* **Backend**: Node.js + Express
+* **Database**: MongoDB 
+* **Authentication**: JWT / Firebase Auth 
+* **Deployment**: Vercel + Render
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📦 Installation
 
-### `npm test`
+1. Clone the repo
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ```bash
+   git clone https://github.com/your-username/complaint-ticketing-portal.git
+   cd complaint-ticketing-portal
+   ```
 
-### `npm run build`
+2. Install dependencies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   * For frontend
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+     ```bash
+     npm install
+     ```
+   * For backend
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+     ```bash
+     cd backend
+     npm install
+     ```
 
-### `npm run eject`
+3. Setup environment variables
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   * Create a `.env` file in the backend folder and add:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+     ```env
+     PORT=5000
+     DB_URI=your_database_uri
+     JWT_SECRET=your_secret_key
+     ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+4. Run the project
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   * Backend
 
-## Learn More
+     ```bash
+     cd backend
+     node server.js
+     ```
+   * Frontend
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+     ```bash
+     npm start
+     ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+5. Open in browser
 
-### Code Splitting
+   ```
+   http://localhost:3000
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 📂 Project Structure
 
-### Analyzing the Bundle Size
+```
+complaint-ticketing-portal/
+│── backend/        # Frontend React app
+│── public/        # Static assets
+│── src/        # All pages 
+│── README.md
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🔑 User Roles
 
-### Making a Progressive Web App
+* **User**: Can raise complaints, check status, comment.
+* **Admin/Staff**: Can view all tickets, update status, assign, close tickets.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 📝 Future Enhancements
 
-### Advanced Configuration
+* File upload support for complaints
+* SMS alerts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🤝 Contributing
 
-### Deployment
+Contributions are welcome! Fork the repo and submit a pull request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 📜 License
 
-### `npm run build` fails to minify
+This project is licensed under the MIT License.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
